@@ -7,7 +7,7 @@ const { fetchWithRetry } = require(`${basePath}/utils/functions/fetchWithRetry.j
 
 const { GENERIC } = require(`${basePath}/src/config.js`);
 
-const regex = new RegExp("^([0-9]+).json$");
+const regex = new RegExp("^([1-9]+).json$");
 
 if (!fs.existsSync(path.join(`${basePath}/build`, "/ipfsMetas"))) {
   fs.mkdirSync(path.join(`${basePath}/build`, "ipfsMetas"));

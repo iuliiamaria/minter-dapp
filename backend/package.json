@@ -12,6 +12,7 @@
     ]
   },
   "scripts": {
+    "pretty": "prettier --write \"./**/*.{json}\"" ,
     "build": "node index.js",
     "generate": "node index.js",
     "rarity": "node utils/rarity",
