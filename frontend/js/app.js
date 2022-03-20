@@ -277,13 +277,18 @@ function setTotalPrice() {
   const mintInputValue = parseInt(mintInput.value);
   const totalPrice = document.getElementById("totalPrice");
   const mintButton = document.getElementById("mintButton");
+  const presaleMintActive = await contract.methods.presaleActive().call();
   if(mintInputValue < 1 || mintInputValue > info.deploymentConfig.tokensPerMint) {
     totalPrice.innerText = 'INVALID QUANTITY';
     mintButton.disabled = true;
     mintInput.disabled = true;
     return;
   }
-  const totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
+  if (presaleMintActive) {
+    const totalPriceWei = BigInt(0.0005) * BigInt(mintInputValue);
+  } else {
+    const totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
+  }
   
   let priceType = '';
   if(chain === 'rinkeby') {
