@@ -278,6 +278,7 @@ function setTotalPrice() {
   const totalPrice = document.getElementById("totalPrice");
   const mintButton = document.getElementById("mintButton");
   const presaleMintActive = await contract.methods.presaleActive().call();
+  let totalPriceWei;
   if(mintInputValue < 1 || mintInputValue > info.deploymentConfig.tokensPerMint) {
     totalPrice.innerText = 'INVALID QUANTITY';
     mintButton.disabled = true;
@@ -285,9 +286,9 @@ function setTotalPrice() {
     return;
   }
   if (presaleMintActive) {
-    const totalPriceWei = BigInt(0.0005) * BigInt(mintInputValue);
+    totalPriceWei = BigInt(info.deploymentConfig.presaleMintPrice) * BigInt(mintInputValue);
   } else {
-    const totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
+    totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
   }
   
   let priceType = '';
