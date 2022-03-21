@@ -164,13 +164,14 @@ const OWNER_ADDRESS = '0x58897DbEcA5af90e931E6f4098be5E8F9019489F';
 const TREASURY_ADDRESS = '0x58897DbEcA5af90e931E6f4098be5E8F9019489F';
 const MAX_SUPPLY = 5517; // The maximum number of NFTs that can be minted. CANNOT BE UPDATED!
 const MINT_PRICE = 0.001; // Minting price per NFT. Rinkeby = ETH, Polygon = MATIC. CANNOT BE UPDATED!
-const TOKENS_PER_MINT = 10; // maximum number of NFTs a user can mint in a single transaction. CANNOT BE UPDATED!
+const PRESALE_MINT_PRICE = 0.0005; // Pre-sale minting price per NFT. Rinkeby = ETH, Polygon = MATIC. CANNOT BE UPDATED!
+const TOKENS_PER_MINT = 5; // maximum number of NFTs a user can mint in a single transaction. CANNOT BE UPDATED!
 
 // REQUIRED CONTRACT DETAILS THAT CAN BE UPDATED LATER.
-const PUBLIC_MINT_START_DATE = "2022-03-20T11:30:48+00:00"; // This is required. Eg: 2022-02-08T11:30:48+00:00
+const PUBLIC_MINT_START_DATE = "2022-03-30T11:30:48+00:00"; // This is required. Eg: 2022-02-08T11:30:48+00:00
 
 // OPTIONAL CONTRACT DETAILS THAT CAN BE UPDATED LATER.
-const PRESALE_MINT_START_DATE = "2022-03-30T11:30:48+00:00"; // Optional. Eg: 2022-02-08T11:30:48+00:00
+const PRESALE_MINT_START_DATE = "2022-03-20T11:30:48+00:00"; // Optional. Eg: 2022-02-08T11:30:48+00:00
 const ROYALTY_SHARE = 1000; // Percentage of the token price that goes to the royalty address. 100 bps = 1%
 const ROYALTY_ADDRESS = "0x58897DbEcA5af90e931E6f4098be5E8F9019489F"; // Address that will receive the royalty
 const BASE_URI = null; // only update if you want to manually set the base uri
@@ -299,6 +300,7 @@ module.exports = {
   ROYALTY_ADDRESS,
   MAX_SUPPLY,
   MINT_PRICE,
+  PRESALE_MINT_PRICE,
   TOKENS_PER_MINT,
   PRESALE_MINT_START_DATE,
   PUBLIC_MINT_START_DATE,
