@@ -1,4 +1,4 @@
-const contractAddress = "0xA96029808A482063fEa14FE47B0F5e9B99a47A91"; //Replace with your own contract address
+const contractAddress = "0xb548fd1cce19bd7d79c52cd90b2c524b147597e7"; //Replace with your own contract address
 const chain = 'rinkeby'; // rinkeby or polygon
 
 const welcome_h1 = "Welcome to the LowKey The $cottish NFT Project!!";
@@ -344,11 +344,6 @@ const abi = [
               },
               {
                 internalType: "uint256",
-                name: "presaleMintPrice",
-                type: "uint256"
-              },
-              {
-                internalType: "uint256",
                 name: "tokensPerMint",
                 type: "uint256",
               },
@@ -377,11 +372,6 @@ const abi = [
               {
                 internalType: "uint256",
                 name: "publicMintStart",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "presaleMintStart",
                 type: "uint256",
               },
               {
@@ -497,11 +487,6 @@ const abi = [
             internalType: "uint256",
             name: "mintPrice",
             type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "presaleMintPrice",
-            type: "uint256"
           },
           {
             internalType: "uint256",
@@ -651,19 +636,6 @@ const abi = [
   {
     inputs: [],
     name: "mintPrice",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "presaleMintPrice",
     outputs: [
       {
         internalType: "uint256",

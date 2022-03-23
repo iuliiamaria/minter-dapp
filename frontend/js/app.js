@@ -50,7 +50,7 @@ const updateConnectStatus = async () => {
   const onboarding = new MetaMaskOnboarding();
   const onboardButton = document.getElementById("connectWallet");
   const notConnected = document.querySelector('.not-connected');
-  // const spinner = document.getElementById("spinner");
+  const spinner = document.getElementById("spinner");
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     onboardButton.innerText = "Install MetaMask!";
     onboardButton.onclick = () => {
@@ -58,7 +58,7 @@ const updateConnectStatus = async () => {
       onboardButton.disabled = true;
       onboarding.startOnboarding();
       // HIDE SPINNER
-      // spinner.classList.add('hidden');
+      spinner.classList.add('hidden');
       notConnected.classList.remove('hidden');
       notConnected.classList.add('show-not-connected');
     };
@@ -70,14 +70,14 @@ const updateConnectStatus = async () => {
     notConnected.classList.remove('show-not-connected');
     notConnected.classList.add('hidden');
     // SHOW SPINNER
-    // spinner.classList.remove('hidden');
+    spinner.classList.remove('hidden');
     window.contract = new web3.eth.Contract(abi, contractAddress);
     console.log(window.contract);
     loadInfo();
   } else {
     onboardButton.innerText = "Connect MetaMask!";
     // HIDE SPINNER
-    // spinner.classList.add('hidden');
+    spinner.classList.add('hidden');
     notConnected.classList.remove('hidden');
     notConnected.classList.add('show-not-connected');
     onboardButton.onclick = async () => {
@@ -90,7 +90,7 @@ const updateConnectStatus = async () => {
           notConnected.classList.remove('show-not-connected');
           notConnected.classList.add('hidden');
           // SHOW SPINNER
-          // spinner.classList.remove('hidden');
+          spinner.classList.remove('hidden');
           onboardButton.disabled = true;
           window.address = accts[0];
           accounts = accts;
@@ -163,7 +163,7 @@ async function loadInfo() {
   const actionButton = document.getElementById("actionButton");
   const mintContainer = document.getElementById("mintContainer");
   const mintButton = document.getElementById("mintButton");
-  // const spinner = document.getElementById("spinner");
+  const spinner = document.getElementById("spinner");
 
   let startTime = "";
   if (publicMintActive) {
@@ -213,7 +213,7 @@ async function loadInfo() {
   countdown();
 
   // HIDE SPINNER
-  // spinner.classList.add('hidden');
+  spinner.classList.add('hidden');
 
   // SHOW CARD
   setTimeout(() => {
@@ -278,7 +278,7 @@ function setTotalPrice() {
   const mintInputValue = parseInt(mintInput.value);
   const totalPrice = document.getElementById("totalPrice");
   const mintButton = document.getElementById("mintButton");
-  const presaleMintActive = await contract.methods.presaleActive().call();
+  // const presaleMintActive = await contract.methods.presaleActive().call();
   let totalPriceWei;
   if(mintInputValue < 1 || mintInputValue > info.deploymentConfig.tokensPerMint) {
     totalPrice.innerText = 'INVALID QUANTITY';
@@ -286,11 +286,13 @@ function setTotalPrice() {
     mintInput.disabled = true;
     return;
   }
-  if (presaleMintActive) {
-    totalPriceWei = BigInt(info.deploymentConfig.presaleMintPrice) * BigInt(mintInputValue);
-  } else {
-    totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
-  }
+  // if (presaleMintActive) {
+  //   totalPriceWei = BigInt(info.deploymentConfig.presaleMintPrice) * BigInt(mintInputValue);
+  // } else {
+  //   totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
+  // }
+
+  totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
   
   let priceType = '';
   if(chain === 'rinkeby') {
@@ -307,8 +309,8 @@ function setTotalPrice() {
 async function mint() {
   const mintButton = document.getElementById("mintButton");
   mintButton.disabled = true;
-  // const spinner = '<div class="dot-elastic"></div><span>Waiting for transaction...</span>';
-  // mintButton.innerHTML = spinner;
+  const spinner = '<div class="dot-elastic"></div><span>Waiting for transaction...</span>';
+  mintButton.innerHTML = spinner;
 
   const amount = parseInt(document.getElementById("mintInput").value);
   const value = BigInt(info.deploymentConfig.mintPrice) * BigInt(amount);
