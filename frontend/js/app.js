@@ -50,7 +50,7 @@ const updateConnectStatus = async () => {
   const onboarding = new MetaMaskOnboarding();
   const onboardButton = document.getElementById("connectWallet");
   const notConnected = document.querySelector('.not-connected');
-  const spinner = document.getElementById("spinner");
+  // const spinner = document.getElementById("spinner");
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     onboardButton.innerText = "Install MetaMask!";
     onboardButton.onclick = () => {
@@ -308,7 +308,7 @@ async function mint() {
   const mintButton = document.getElementById("mintButton");
   mintButton.disabled = true;
   // const spinner = '<div class="dot-elastic"></div><span>Waiting for transaction...</span>';
-  mintButton.innerHTML = spinner;
+  // mintButton.innerHTML = spinner;
 
   const amount = parseInt(document.getElementById("mintInput").value);
   const value = BigInt(info.deploymentConfig.mintPrice) * BigInt(amount);
