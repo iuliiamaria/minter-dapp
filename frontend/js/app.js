@@ -72,7 +72,6 @@ const updateConnectStatus = async () => {
     // SHOW SPINNER
     spinner.classList.remove('hidden');
     window.contract = new web3.eth.Contract(abi, contractAddress);
-    console.log(window.contract);
     loadInfo();
   } else {
     onboardButton.innerText = "Connect MetaMask!";
@@ -278,21 +277,13 @@ function setTotalPrice() {
   const mintInputValue = parseInt(mintInput.value);
   const totalPrice = document.getElementById("totalPrice");
   const mintButton = document.getElementById("mintButton");
-  // const presaleMintActive = await contract.methods.presaleActive().call();
-  let totalPriceWei;
   if(mintInputValue < 1 || mintInputValue > info.deploymentConfig.tokensPerMint) {
     totalPrice.innerText = 'INVALID QUANTITY';
     mintButton.disabled = true;
     mintInput.disabled = true;
     return;
   }
-  // if (presaleMintActive) {
-  //   totalPriceWei = BigInt(info.deploymentConfig.presaleMintPrice) * BigInt(mintInputValue);
-  // } else {
-  //   totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
-  // }
-
-  totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
+  const totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
   
   let priceType = '';
   if(chain === 'rinkeby') {

@@ -375,6 +375,11 @@ const abi = [
                 type: "uint256",
               },
               {
+                internalType: "uint256",
+                name: "presaleMintStart",
+                type: "uint256",
+              },
+              {
                 internalType: "string",
                 name: "prerevealTokenURI",
                 type: "string",
