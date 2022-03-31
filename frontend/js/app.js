@@ -282,8 +282,8 @@ function setTotalPrice() {
   const mintInputValue = parseInt(mintInput.value);
   const totalPrice = document.getElementById("totalPrice");
   const mintButton = document.getElementById("mintButton");
-  const maxMintAmount = await contract.methods.maxMintAmount().call();
-  if(mintInputValue < 1 || mintInputValue > maxMintAmount) {
+  // const maxMintAmount = await contract.methods.maxMintAmount().call();
+  if(mintInputValue < 1 || mintInputValue > 5) {
     totalPrice.innerText = 'INVALID QUANTITY';
     mintButton.disabled = true;
     mintInput.disabled = true;
