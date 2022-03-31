@@ -231,7 +231,7 @@ async function loadInfo() {
   } else if (chain === 'polygon') {
     priceType = 'MATIC';
   }
-  const price = web3.utils.fromWei(await contract.methods.cost().call(), 'ether');
+  const price = web3.utils.fromWei(await contract.methods.cost, 'ether');
   const pricePerMint = document.getElementById("pricePerMint");
   const maxPerMint = document.getElementById("maxPerMint");
   const totalSupply = document.getElementById("totalSupply");
@@ -282,13 +282,13 @@ function setTotalPrice() {
   const mintInputValue = parseInt(mintInput.value);
   const totalPrice = document.getElementById("totalPrice");
   const mintButton = document.getElementById("mintButton");
-  if(mintInputValue < 1 || mintInputValue > await contract.methods.maxMintAmount().call()) {
+  if(mintInputValue < 1 || mintInputValue > await contract.methods.maxMintAmount) {
     totalPrice.innerText = 'INVALID QUANTITY';
     mintButton.disabled = true;
     mintInput.disabled = true;
     return;
   }
-  const totalPriceWei = BigInt(await contract.methods.cost().call()) * BigInt(mintInputValue);
+  const totalPriceWei = BigInt(await contract.methods.cost()) * BigInt(mintInputValue);
   
   let priceType = '';
   if(chain === 'rinkeby') {
@@ -309,7 +309,7 @@ async function mint() {
   mintButton.innerHTML = spinner;
 
   const amount = parseInt(document.getElementById("mintInput").value);
-  const value = BigInt(await contract.methods.cost().call()) * BigInt(amount);
+  const value = BigInt(await contract.methods.cost) * BigInt(amount);
   const publicMintActive = false;
   const presaleMintActive = true;
 
