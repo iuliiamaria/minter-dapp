@@ -289,7 +289,7 @@ function setTotalPrice() {
     mintInput.disabled = true;
     return;
   }
-  const totalPriceWei = BigInt(await contract.methods.cost().call()) * BigInt(mintInputValue);
+  const totalPriceWei = (BigInt(await contract.methods.cost().call()) * BigInt(mintInputValue));
   
   let priceType = '';
   if(chain === 'rinkeby') {
